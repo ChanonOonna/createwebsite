@@ -1,12 +1,7 @@
-/* สิ่งที่อยู่ตรงนี้ จะมีไว้แค่ให้ dev อ่าน */
-/* 1. แต่งใคร ? (id, class, DOM) 2. แต่งอะไร ? */
-@font-face {
-    font-family: "kanit";
-    src: url("./Kanit/Kanit-Regular.ttf");
-  }
+
   
   body {
-    font-family: "kanit";
+    
     background-color: black;
   }
   
