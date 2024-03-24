@@ -27,7 +27,7 @@ window.onload = async () =>{
         descriptionDOM.value = user.description
   
         let genderDOMs = document.querySelectorAll('input[name=gender]')
-        let interestDOMs = document.querySelectorAll('input[name=interest]')
+        //let interestDOMs = document.querySelectorAll('input[name=interest]')
   
         for (let i = 0; i < genderDOMs.length; i++) {
           if (genderDOMs[i].value == user.gender) {
@@ -36,11 +36,11 @@ window.onload = async () =>{
         }
         
         
-        for (let i = 0; i < interestDOMs.length; i++) {
+        /*for (let i = 0; i < interestDOMs.length; i++) {
           if (user.interests.includes(interestDOMs[i].value)) {
             interestDOMs[i].checked = true
           }
-        }
+        }*/
   
       } catch (error) {
         console.log('error', error)
@@ -62,9 +62,9 @@ const validateData = (userData) => {
     if (!userData.gender) {
         errors.push('กรุณาเลือกเพศ')
     }
-    if (!userData.interests) {
+    /*if (!userData.interests) {
         errors.push('กรุณาเลือกสิ่งที่สนใจ')
-    }
+    }*/
     if (!userData.description) {
         errors.push('กรุณากรอกคำอธิบาย')
     }
@@ -78,18 +78,18 @@ const submitData = async () => {
     let ageDOM = document.querySelector('input[name=age]')
 
     let genderDOM = document.querySelector('input[name=gender]:checked') || {}
-    let interestDOMs = document.querySelectorAll('input[name=interest]:checked') || {}
+    //let interestDOMs = document.querySelectorAll('input[name=interest]:checked') || {}
 
     let descriptionDOM = document.querySelector('textarea[name=description]')
 
     let messageDOM = document.getElementById('message')
 
     try {
-        let interest = []
+        /*let interest = []
 
         for (let i = 0; i < interestDOMs.length; i++) {
             interest.push(interestDOMs[i].value)
-        }
+        }*/
 
         let userData = {
             firstName: firstNameDom.value,
@@ -97,7 +97,7 @@ const submitData = async () => {
             age: ageDOM.value,
             gender: genderDOM.value,
             description: descriptionDOM.value,
-            interests: interest.join(',') // ให้ส่วนสนใจเป็น string แบบ comma-separated
+            /*interests: interest.join(',') // ให้ส่วนสนใจเป็น string แบบ comma-separated*/
         }
 
         const errors = validateData(userData)

@@ -42,9 +42,9 @@ const validateData = (userData) => {
   if (!userData.gender) {
       errors.push('กรุณาเลือกเพศ')
   }
-  if (!userData.interests) {
+  /*if (!userData.interests) {
       errors.push('กรุณาเลือกสิ่งที่สนใจ')
-  }
+  }*/
   if (!userData.description) {
       errors.push('กรุณากรอกคำอธิบาย')
   }
