@@ -3,6 +3,20 @@ const BASE_URL = 'http://localhost:8000';
 let mode = 'CREATE' //default mode
 let selectedId =''
 
+
+/*
+name_estage
+address_estage
+type_estage
+size_estage
+detail_estage
+
+message
+*/
+
+
+
+
 window.onload = async () =>{
     const urlParams =new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
