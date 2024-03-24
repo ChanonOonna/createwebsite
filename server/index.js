@@ -81,10 +81,10 @@ app.post('/users', async (req, res) => {
 
 
 // path = GET /users/:id สำหรับการดึง users รายคนออกมา
-app.get('/users/:id', async (req, res) => {
+app.get('/Estate/:id', async (req, res) => {
   try {
     let id = req.params.id
-  const results = await conn.query('SELECT * FROM users WHERE id = ?', id)
+  const results = await conn.query('SELECT * FROM Estate WHERE id = ?', id)
   if(results[0].length == 0) {
     throw { statusCode: 404, message:'หาไม่เจอ'}
   }
