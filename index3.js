@@ -1,15 +1,3 @@
-
-
-/*
-name_estage
-address_estage
-type_estage
-size_estage
-detail_estage
-
-message
-*/
-
 const BASE_URL = 'http://localhost:8000';
 
 let mode = 'CREATE' //default mode
@@ -55,25 +43,25 @@ window.onload = async () =>{
     }
   }
 
-  const validateData = (estateData) => {
+  const validateData = (userData) => {
     let errors = []
-    if (!estateData.name_estate) {
+    if (!userData.name_estate) {
         errors.push('กรุณากรอกชื่ออสังหาริมทรัพย์')
     }
-    if (!estateData.address_estate) {
+    if (!userData.address_estate) {
         errors.push('กรุณากรอกที่อยู่ของอสังหาริมทรัพย์')
     }
   
-    if (!estateData.size_estate) {
+    if (!userData.size_estate) {
         errors.push('กรุณากรอกขนาดพื้นที่้')
     }
-    if (!estateData.type_estate) {
+    if (!userData.type_estate) {
         errors.push('กรุณาเลือกประเภทของอสังหาริมทรัพย์')
     }
-    /*if (!estateData.interests) {
+    /*if (!userData.interests) {
         errors.push('กรุณาเลือกสิ่งที่สนใจ')
     }*/
-    if (!estateData.description_estate) {
+    if (!userData.description_estate) {
         errors.push('กรุณากรอกคำอธิบายเพิ่มเติมเกี่ยวกับอสังหาริมทรัพย์')
     }
     return errors
@@ -150,4 +138,3 @@ const submitData = async () => {
         messageDOM.className = 'message danger'
     }
 }
-
