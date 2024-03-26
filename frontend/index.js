@@ -55,25 +55,25 @@ window.onload = async () =>{
     }
   }
 
-  const validateData = (userData) => {
+  const validateData = (estateData) => {
     let errors = []
-    if (!userData.name_estate) {
+    if (!estateData.name_estate) {
         errors.push('กรุณากรอกชื่ออสังหาริมทรัพย์')
     }
-    if (!userData.address_estate) {
+    if (!estateData.address_estate) {
         errors.push('กรุณากรอกที่อยู่ของอสังหาริมทรัพย์')
     }
   
-    if (!userData.size_estate) {
+    if (!estateData.size_estate) {
         errors.push('กรุณากรอกขนาดพื้นที่้')
     }
-    if (!userData.type_estate) {
+    if (!estateData.type_estate) {
         errors.push('กรุณาเลือกประเภทของอสังหาริมทรัพย์')
     }
-    /*if (!userData.interests) {
+    /*if (!estateData.interests) {
         errors.push('กรุณาเลือกสิ่งที่สนใจ')
     }*/
-    if (!userData.description_estate) {
+    if (!estateData.description_estate) {
         errors.push('กรุณากรอกคำอธิบายเพิ่มเติมเกี่ยวกับอสังหาริมทรัพย์')
     }
     return errors
