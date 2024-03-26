@@ -99,13 +99,13 @@ app.get('/Estates/:id', async (req, res) => {
 })
 
 //path = PUT /users/:id สำหรับการแก้ไข users รายคน (ตาม id ที่บันทึกเข้าไป)
-app.put('/users/:id', async (req, res) => {
+app.put('/Estates/:id', async (req, res) => {
   try {
     let id = req.params.id;
-    let updateUser = req.body;
+    let updateEstates = req.body;
   const results = await conn.query(
-    'UPDATE users SET ? WHERE id = ?', 
-    [updateUser, id]
+    'UPDATE Estates SET ? WHERE id = ?', 
+    [updateEstates, id]
     )
   console.log('results', results)
   res.json({
