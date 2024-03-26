@@ -1,15 +1,3 @@
-
-
-/*
-name_estage
-address_estage
-type_estage
-size_estage
-detail_estage
-
-message
-*/
-
 const BASE_URL = 'http://localhost:8000';
 
 let mode = 'CREATE' //default mode
@@ -150,4 +138,3 @@ const submitData = async () => {
         messageDOM.className = 'message danger'
     }
 }
-

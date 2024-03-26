@@ -22,48 +22,47 @@ const initMySQL = async () => {
 }
 
  // path = GET /users สำหรับ get users ทั้งหมดที่บันทึกเข้าไปออกมา
-app.get('/Estate', async (req, res) => {
-  const results = await conn.query('SELECT * FROM Estate')
+app.get('/Estates', async (req, res) => {
+  const results = await conn.query('SELECT * FROM Estates')
   res.json(results[0]);
 })
 
-
 const validateData = (userData) => {
   let errors = []
-  if (!userData.firstName) {
-      errors.push('กรุณากรอกชื่อ')
+  if (!userData.name_estate) {
+      errors.push('กรุณากรอกชื่ออสังหาริมทรัพย์')
   }
-  if (!userData.lastName) {
-      errors.push('กรุณากรอกนามสกุล')
+  if (!userData.address_estate) {
+      errors.push('กรุณากรอกที่อยู่ของอสังหาริมทรัพย์')
   }
-  if (!userData.age) {
-      errors.push('กรุณากรอกอายุ')
+
+  if (!userData.size_estate) {
+      errors.push('กรุณากรอกขนาดพื้นที่่')
   }
-  if (!userData.gender) {
-      errors.push('กรุณาเลือกเพศ')
+  if (!userData.type_estate) {
+      errors.push('กรุณาเลือกประเภทของอสังหาริมทรัพย์')
   }
   /*if (!userData.interests) {
       errors.push('กรุณาเลือกสิ่งที่สนใจ')
   }*/
-  if (!userData.description) {
-      errors.push('กรุณากรอกคำอธิบาย')
+  if (!userData.description_estate) {
+      errors.push('กรุณากรอกคำอธิบายเพิ่มเติมเกี่ยวกับอสังหาริมทรัพย์')
   }
   return errors
 }
 
 
-
 // path = POST /users สำหรับการสร้าง users ใหม่บันทึกเข้าไป
-app.post('/users', async (req, res) => {
+app.post('/Estates', async (req, res) => {
   try {
-    let user = req.body;
-    const errors = validateData(user)
+    let Estate = req.body;
+    const errors = validateData(Estate)
     if (errors.length > 0) {
       throw { message : 'กรุณากรอกข้อมูลให้ครบถ้วนน๊ะจะหลังบ้าน' ,
       errors : errors }
     }
 
-  const results = await conn.query('INSERT INTO users SET ?', user)
+  const results = await conn.query('INSERT INTO Estates SET ?', Estate)
   res.json({
     message: 'Create user successfully',
     data: results[0]
@@ -81,10 +80,10 @@ app.post('/users', async (req, res) => {
 
 
 // path = GET /users/:id สำหรับการดึง users รายคนออกมา
-app.get('/Estate/:id', async (req, res) => {
+app.get('/Estates/:id', async (req, res) => {
   try {
     let id = req.params.id
-  const results = await conn.query('SELECT * FROM Estate WHERE id = ?', id)
+  const results = await conn.query('SELECT * FROM Estates WHERE id = ?', id)
   if(results[0].length == 0) {
     throw { statusCode: 404, message:'หาไม่เจอ'}
   }

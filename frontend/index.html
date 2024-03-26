@@ -20,30 +20,30 @@
     </div>
     <div class="flex form-input">
       <div class="header-form">ชื่ออสังหาริมทรัพย์</div>
-      <input class="form" name="firstname" type="text">
+      <input class="form" name="name_estate" type="text">
     </div>
     <div class="flex form-input">
       <div class="header-form">ที่อยู่อสังหาริมทรัพย์ </div>
-      <input class="form" name="lastname" type="text">
+      <input class="form" name="address_estate" type="text">
     </div>
     
     <div class="flex gender form-input">
       <div class="header-form">ประเภทของอสังหาริมทรัพย์</div>
       <div class="flex">
         <div>
-          <input name="gender" type="radio" value="ชาย"> บ้าน
+          <input name="type_estate" type="radio" value="บ้าน"> บ้าน
         </div>
         <div>
-          <input name="gender" type="radio" value="หญิง"> อพาร์ทเม้น
+          <input name="type_estate" type="radio" value="อพาร์ทเม้น"> อพาร์ทเม้น
         </div>
         <div>
-          <input name="gender" type="radio" value="ไม่ระบุ"> คอนโด
+          <input name="type_estate" type="radio" value="คอนโด"> คอนโด
         </div>
       </div>
     </div>
     <div class="flex form-input">
       <div class="header-form-size">ขนาดของอสังหาริมทรัพย์ (ตรม.)</div>
-      <input class="form" name="age" type="number" min="0" max="100"> 
+      <input class="form" name="size_estate" type="number" min="0" max="100"> 
     </div>
     <!--
     <div class="form-input">
@@ -62,17 +62,17 @@
     <div class="form-input">
       ลายระเอียดอสังหาริมทรัพย์
       <div>
-        <textarea name="description"></textarea>
+        <textarea name="description_estate"></textarea>
       </div>
     </div>
     <div id = "message" class ="message">
-      hi hi
+      hi hi hi
     </div>
     <div class="center">
       <button onclick="submitData()" class="button">ส่งข้อมูล</button>
     </div>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-<script src="index.js"></script>
+<script src="index1.js"></script>
 </body>
 </html>
