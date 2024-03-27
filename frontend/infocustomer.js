@@ -1,12 +1,11 @@
-
-
+//กรอกข้อมูลลูกค้า .js
 /*
 name_estage
 address_estage
 type_estage
 size_estage
-detail_estage
-
+description_estate
+status
 message
 */
 
@@ -25,86 +24,75 @@ window.onload = async () =>{
 
     //1ดึงข้อมูล user เก่าก่อน
     try {
-        const response = await axios.get(`${BASE_URL}/Estates/${id}`)
-        const estates = response.data
-  
-        let name_estateDOM = document.querySelector('input[name=name_estate]')
-        let address_estateDOM = document.querySelector('input[name=address_estate]')
-        let size_estageDOM = document.querySelector('input[name=size_estage]')
-        let description_estateDOM = document.querySelector('textarea[name=description_estage]')
-  
-        
-        name_estateDOM.value = estates.name_estate
-        address_estateDOM.value = estates.address_estate
-        size_estageDOM.value = estates.size_estage
-        description_estateDOM.value = estates.description_estate
+        const response = await axios.get(`${BASE_URL}/Customers/${id}`) // Corrected to use /Customers
 
-  
-        let type_estageDOMs = document.querySelectorAll('input[name=type_estage]:checked')
-  
+        const customers = response.data
+        console.log(customers)
+        let firstname_customerDOM = document.querySelector('input[name=firstname_customer]')
+        let lastname_customerDOM = document.querySelector('input[name=lastname_customer]')
         
-        for (let i = 0; i < type_estageDOMs.length; i++) {
-            if (type_estageDOMs[i].value == estates.type_estage) {
-              type_estageDOMs[i].checked = true
+        let description_customerDOM = document.querySelector('textarea[name=description_customer]')
+        
+        firstname_customerDOM.value = customers.firstname_customer
+        lastname_customerDOM.value = customers.lastname_customer
+        
+        description_customerDOM.value = customers.description_customer
+        
+        let type_customerDOMs = document.querySelectorAll('input[name=type_customer]')
+        
+        for (let i = 0; i < type_customerDOMs.length; i++) {
+            if (type_customerDOMs[i].value == customers.type_Customer) {
+              type_customerDOMs[i].checked = true
             }
           }
-  
+
       } catch (error) {
         console.log('error', error)
+        console.log('error message', error.message); // แสดงข้อความของข้อผิดพลาด
+        console.log('error stack', error.stack); // แสดงรายละเอียดเพิ่มเติมของข้อผิดพลาด
       }
     }
   }
 
-  const validateData = (estateData) => {
+  const validateDatacus = (customersData) => {
     let errors = []
-    if (!estateData.name_estate) {
-        errors.push('กรุณากรอกชื่ออสังหาริมทรัพย์')
+    if (!customersData.firstname_customer) {
+        errors.push('กรุณากรอกชื่อ')
     }
-    if (!estateData.address_estate) {
-        errors.push('กรุณากรอกที่อยู่ของอสังหาริมทรัพย์')
+    if (!customersData.lastname_customer) {
+        errors.push('กรุณากรอกที่นามสกุล')
     }
   
-    if (!estateData.size_estate) {
-        errors.push('กรุณากรอกขนาดพื้นที่้')
+    if (!customersData.type_customer) {
+        errors.push('กรุณากรอกประเภท')
     }
-    if (!estateData.type_estate) {
-        errors.push('กรุณาเลือกประเภทของอสังหาริมทรัพย์')
+    if (!customersData.description_customer) {
+        errors.push('กรุณาความต้องการเพิ่มเติม')
     }
-    /*if (!estateData.interests) {
-        errors.push('กรุณาเลือกสิ่งที่สนใจ')
-    }*/
-    if (!estateData.description_estate) {
-        errors.push('กรุณากรอกคำอธิบายเพิ่มเติมเกี่ยวกับอสังหาริมทรัพย์')
-    }
+
     return errors
   }
   
 const submitData = async () => {
 
-    let name_estateDOM = document.querySelector('input[name=name_estate]')
-    let address_estateDOM = document.querySelector('input[name=address_estate]')
-    let size_estateDOM = document.querySelector('input[name=size_estate]')
-
-    let type_estateDOM = document.querySelector('input[name=type_estate]:checked') || {}
-    //let interestDOMs = document.querySelectorAll('input[name=interests]:checked') || {}
-
-    let description_estateDOM = document.querySelector('textarea[name=description_estate]')
+    let firstname_customerDOM = document.querySelector('input[name=firstname_customer]')
+    let lastname_customerDOM = document.querySelector('input[name=lastname_customer]')
+    let type_customerDOM = document.querySelector('input[name=type_customer]') || {}
+    let description_customerDOM = document.querySelector('textarea[name=description_customer]')
 
     let messageDOM = document.getElementById('message')
 
     try {
-        
-        let EstateData = {
-          name_estate: name_estateDOM.value,
-          address_estate: address_estateDOM.value,  
-          type_estate: type_estateDOM.value,
-          size_estate: size_estateDOM.value,
-          description_estate: description_estateDOM.value,
+        let customersData = {
+          firstname_customer: firstname_customerDOM.value,
+          lastname_customer: lastname_customerDOM.value,
+          type_customer: type_customerDOM.value,
+          description_customer: description_customerDOM.value,
         }
         
-        console.log('submit data', EstateData)
+        console.log('submit data', customersData)
   
-        const errors = validateData(EstateData)
+        const errors = validateDatacus(customersData)
         
         if (errors.length > 0) {
             // มี error เกิดขึ้น
@@ -116,10 +104,10 @@ const submitData = async () => {
         let message = 'บันทึกข้อมูลเรียบร้อยเเล้ว'
 
         if(mode == 'CREATE'){
-            const response = await axios.post(`${BASE_URL}/Estates`,EstateData)
+            const response = await axios.post(`${BASE_URL}/Customers`,customersData) // Edited /Estates to /Customers
             console.log('response',response.data)
         } else {//http://localhost:8000/users/17
-            const response = await axios.put(`${BASE_URL}/Estates/${selectedId}`, EstateData)
+            const response = await axios.put(`${BASE_URL}/Customers/${selectedId}`, customersData) // Edited /Estates to /Customers
             message = 'แก้ไขข้อมูลเรียบร้อยแล้ว'
             console.log('response', response.data)
         }
@@ -128,7 +116,6 @@ const submitData = async () => {
         messageDOM.className = 'message success'
         
     } catch (error) {
-        console.log(description_estateDOM.value)
         console.log('error message', error.message)
         console.log('error', error.errors)////
 
@@ -137,12 +124,12 @@ const submitData = async () => {
             error.message = error.response.data.message
             error.errors =error.response.data.errors
         }
-
+        
         let htmlData = '<div><ul>'
         htmlData += `<div>${error.message}</div>`
         for (let i = 0; i < error.errors.length; i++) {
-    htmlData += `<li>${error.errors[i]}</li>`;
-}
+            htmlData += `<li>${error.errors[i]}</li>`;
+        }
 
         htmlData += '</ul></div>'
 
@@ -150,4 +137,5 @@ const submitData = async () => {
         messageDOM.className = 'message danger'
     }
 }
+
 
