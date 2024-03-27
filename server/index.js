@@ -37,7 +37,7 @@ const validateData = (estateData) => {
   }
 
   if (!estateData.size_estate) {
-      errors.push('กรุณากรอกขนาดพื้นที่่')
+      errors.push('กรุณากรอกขนาดพื้นที่้')
   }
   if (!estateData.type_estate) {
       errors.push('กรุณาเลือกประเภทของอสังหาริมทรัพย์')
@@ -48,9 +48,9 @@ const validateData = (estateData) => {
   if (!estateData.description_estate) {
       errors.push('กรุณากรอกคำอธิบายเพิ่มเติมเกี่ยวกับอสังหาริมทรัพย์')
   }
+  
   return errors
 }
-
 
 // path = POST /users สำหรับการสร้าง users ใหม่บันทึกเข้าไป
 app.post('/Estates', async (req, res) => {

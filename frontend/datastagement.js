@@ -33,6 +33,7 @@ window.onload = async () =>{
         let address_estateDOM = document.querySelector('input[name=address_estate]')
         let size_estateDOM = document.querySelector('input[name=size_estate]')
         let description_estateDOM = document.querySelector('textarea[name=description_estate]')
+        //let status_estateDOM = document.querySelector('select[name=status]')
         // {
         //     "id": 2,
         //     "name_Estate": "boondee",
@@ -45,7 +46,8 @@ window.onload = async () =>{
         address_estateDOM.value = estates.address_Estate
         size_estateDOM.value = estates.size_Estate.toString()
         description_estateDOM.value = estates.description_Estate
-        console.log(name_estateDOM)
+        //status_estateDOM.value = estates.status_estate
+        
         let type_estateDOMs = document.querySelectorAll('input[name=type_estate]')
   
         
@@ -84,6 +86,7 @@ window.onload = async () =>{
     if (!estateData.description_estate) {
         errors.push('กรุณากรอกคำอธิบายเพิ่มเติมเกี่ยวกับอสังหาริมทรัพย์')
     }
+    
     return errors
   }
   

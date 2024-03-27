@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ส่วนที่ไม่แสดงออกไปในหน้าจอของ Browser -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ส่วนที่แสดงออกไปในหน้าจอของ Browser -->
+
+<div class="button-go">
+  <a href="usercustomer.html">รายชื่อผู้เช่า/ซื้อ</a>
+</div>
+
+<div class="button-go">
+  <a href="datastagement.html">กรอกข้อมูลอสังหา</a>
+</div>
+  <div class="container">
+    <!-- 3. form -->
+    <div class="header form-input">
+      ข้อมูลเกี่ยวกับผู้เช่า/ซื้อ อสังหาริมทรัพย์
+    </div>
+    <div class="flex form-input">
+      <div class="header-form">ชื่อ ผู้เช่า/ซื้อ</div>
+      <input class="form" name="firstname_customer" type="text">
+    </div>
+    <div class="flex form-input">
+      <div class="header-form">นามสกุล ผู้เช่า/ซื้อ</div>
+      <input class="form" name="lastname_customer" type="text">
+    </div>
+    
+    <div class="flex gender form-input">
+      <div class="header-form">ประเภทของอสังหาริมทรัพย์มี่ต้องการ เช่า/ซื้อ</div>
+      <div class="flex">
+        <div>
+          <input name="type_estate" type="checkbox" value="บ้าน"> บ้าน
+        </div>
+        <div>
+          <input name="type_estate" type="checkbox" value="อพาร์ทเม้น"> อพาร์ทเม้น
+        </div>
+        <div>
+          <input name="type_estate" type="checkbox" value="คอนโด"> คอนโด
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-input">
+      ลายระเอียดอสังหาริมทรัพย์ที่ต้องการ
+      <div>
+        <textarea name="description_estate"></textarea>
+      </div>
+    </div>
+
+    
+    </div>
+    <div id = "message" class ="message">
+      hi hi hi
+    </div>
+    <div class="center">
+      <button onclick="submitData()" class="button">ส่งข้อมูล</button>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script src="datastagement.js"></script>
+</body>
+</html>
