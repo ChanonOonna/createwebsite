@@ -82,17 +82,17 @@ app.post('/Estates', async (req, res) => {
 // path = GET /users/:id สำหรับการดึง users รายคนออกมา
 app.get('/Estates/:id', async (req, res) => {
   try {
-    let id = req.params.id
-  const results = await conn.query('SELECT * FROM Estates WHERE id = ?', id)
-  if(results[0].length == 0) {
-    throw { statusCode: 404, message:'หาไม่เจอ'}
-  }
-  res.json(results[0][0])
-  }catch(error) {
+    let Estate = req.params.id
+    const results = await conn.query('SELECT * FROM Estates WHERE id = ?', Estate)
+    if (results[0].length == 0) {
+      throw { statusCode: 404, message: 'หาไม่เจอ' }
+    }
+    res.json(results[0][0])
+  } catch (error) {
     console.error('error message', error.message)
     let statusCode = error.statusCode || 500
     res.status(statusCode).json({
-      message: 'something worng',
+      message: 'something wrong',
       errorMessage: error.message
     })
   }
@@ -101,11 +101,11 @@ app.get('/Estates/:id', async (req, res) => {
 //path = PUT /users/:id สำหรับการแก้ไข users รายคน (ตาม id ที่บันทึกเข้าไป)
 app.put('/Estates/:id', async (req, res) => {
   try {
-    let id = req.params.id;
+    let Estate = req.params.id;
     let updateEstates = req.body;
   const results = await conn.query(
     'UPDATE Estates SET ? WHERE id = ?', 
-    [updateEstates, id]
+    [updateEstates, Estate]
     )
   console.log('results', results)
   res.json({
@@ -121,10 +121,10 @@ app.put('/Estates/:id', async (req, res) => {
 })
 
 // path = DELETE /users/:id สำหรับการลบ users รายคน (ตาม id ที่บันทึกเข้าไป)
-app.delete('/users/:id', async (req, res) => {
+app.delete('/Estates/:id', async (req, res) => {
   try {
     let id = req.params.id;
-  const results = await conn.query('DELETE FROM users WHERE id = ?', id)
+  const results = await conn.query('DELETE FROM Estates WHERE id = ?', id)
   console.log('results', results)
   res.json({
     message: 'Delete user successfully',

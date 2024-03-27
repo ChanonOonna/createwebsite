@@ -5,7 +5,7 @@ name_estage
 address_estage
 type_estage
 size_estage
-detail_estage
+description_estate
 
 message
 */
@@ -26,31 +26,39 @@ window.onload = async () =>{
     //1ดึงข้อมูล user เก่าก่อน
     try {
         const response = await axios.get(`${BASE_URL}/Estates/${id}`)
+
         const estates = response.data
-  
+        console.log(estates)
         let name_estateDOM = document.querySelector('input[name=name_estate]')
         let address_estateDOM = document.querySelector('input[name=address_estate]')
-        let size_estageDOM = document.querySelector('input[name=size_estage]')
-        let detail_estageDOM = document.querySelector('input[name=detail_estage]')
+        let size_estateDOM = document.querySelector('input[name=size_estate]')
+        let description_estateDOM = document.querySelector('textarea[name=description_estate]')
+        // {
+        //     "id": 2,
+        //     "name_Estate": "boondee",
+        //     "address_Estate": "boondee 45/2 rode 45",
+        //     "type_Estate": "อพาร์ทเม้น",
+        //     "size_Estate": 34.5,
+        //     "description_Estate": "big tower"
+        // }
+        name_estateDOM.value = estates.name_Estate
+        address_estateDOM.value = estates.address_Estate
+        size_estateDOM.value = estates.size_Estate.toString()
+        description_estateDOM.value = estates.description_Estate
+        console.log(name_estateDOM)
+        let type_estateDOMs = document.querySelectorAll('input[name=type_estate]')
   
         
-        name_estateDOM.value = estates.name_estate
-        address_estateDOM.value = estates.address_estate
-        size_estageDOM.value = estates.size_estage
-        detail_estageDOM.value = estates.detail_estage
-
-  
-        let type_estageDOMs = document.querySelectorAll('input[name=type_estage]:checked')
-  
-        
-        for (let i = 0; i < type_estageDOMs.length; i++) {
-            if (type_estageDOMs[i].value == estates.type_estage) {
-              type_estageDOMs[i].checked = true
+        for (let i = 0; i < type_estateDOMs.length; i++) {
+            if (type_estateDOMs[i].value == estates.type_Estate) {
+              type_estateDOMs[i].checked = true
             }
           }
-  
+
       } catch (error) {
         console.log('error', error)
+        console.log('error message', error.message); // แสดงข้อความของข้อผิดพลาด
+        console.log('error stack', error.stack); // แสดงรายละเอียดเพิ่มเติมของข้อผิดพลาด
       }
     }
   }
@@ -137,7 +145,7 @@ const submitData = async () => {
             error.message = error.response.data.message
             error.errors =error.response.data.errors
         }
-
+        
         let htmlData = '<div><ul>'
         htmlData += `<div>${error.message}</div>`
         for (let i = 0; i < error.errors.length; i++) {

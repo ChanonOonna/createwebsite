@@ -31,13 +31,13 @@ window.onload = async () =>{
         let name_estateDOM = document.querySelector('input[name=name_estate]')
         let address_estateDOM = document.querySelector('input[name=address_estate]')
         let size_estageDOM = document.querySelector('input[name=size_estage]')
-        let detail_estageDOM = document.querySelector('input[name=detail_estage]')
+        let description_estateDOM = document.querySelector('textarea[name=description_estage]')
   
         
         name_estateDOM.value = estates.name_estate
         address_estateDOM.value = estates.address_estate
         size_estageDOM.value = estates.size_estage
-        detail_estageDOM.value = estates.detail_estage
+        description_estateDOM.value = estates.description_estate
 
   
         let type_estageDOMs = document.querySelectorAll('input[name=type_estage]:checked')

@@ -6,14 +6,7 @@ const loadData = async () => {
 
     console.log('loaded')
 
-    try {
-        const datastagement = await axios.get(`${BASE_URL}/Estates`);
-        console.log('dataEstates:' , datastagement )
-
-    }catch (error){
-        console.log('error'),error
-    }
-
+    
       //1. load user ทั้งหมดออกมาจาก API
    const response = await axios.get(`${BASE_URL}/Estates`);
    console.log(response.data);
@@ -26,8 +19,8 @@ const loadData = async () => {
     for(let i=0; i<response.data.length; i++){
         let dataEstates = response.data[i];
         htmlData += `<div>
-        ${dataEstates.id} ${dataEstates.name_estate} ${dataEstates.type_estate}
-        <a href='index.html?id=${dataEstates.id}'><button class="edit">Edit</button></a> 
+        ${dataEstates.id} ${dataEstates.name_Estate} ${dataEstates.type_Estate}
+        <a href='datastagement.html?id=${dataEstates.id}'><button class="edit">Edit</button></a> 
         <button class ='delete' data-id='${dataEstates.id}'>Delete</button>
         </div>`;
     }
