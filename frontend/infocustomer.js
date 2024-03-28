@@ -9,7 +9,7 @@ status
 message
 */
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'http://localhost:7000';
 
 let mode = 'CREATE' //default mode
 let selectedId =''
@@ -24,7 +24,7 @@ window.onload = async () =>{
 
     //1ดึงข้อมูล user เก่าก่อน
     try {
-        const response = await axios.get(`${BASE_URL}/Customers/${id}`) // Corrected to use /Customers
+        const response = await axios.get(`${BASE_URL}/Customers/${id}`) 
 
         const customers = response.data
         console.log(customers)
@@ -41,11 +41,10 @@ window.onload = async () =>{
         let type_customerDOMs = document.querySelectorAll('input[name=type_customer]')
         
         for (let i = 0; i < type_customerDOMs.length; i++) {
-            if (type_customerDOMs[i].value == customers.type_Customer) {
+            if (type_customerDOMs[i].value == customers.type_customer) { // แก้ไข customers.type_Customer เป็น customers.type_customer
               type_customerDOMs[i].checked = true
             }
           }
-
       } catch (error) {
         console.log('error', error)
         console.log('error message', error.message); // แสดงข้อความของข้อผิดพลาด
@@ -106,7 +105,7 @@ const submitData = async () => {
         if(mode == 'CREATE'){
             const response = await axios.post(`${BASE_URL}/Customers`,customersData) // Edited /Estates to /Customers
             console.log('response',response.data)
-        } else {//http://localhost:8000/users/17
+        } else {
             const response = await axios.put(`${BASE_URL}/Customers/${selectedId}`, customersData) // Edited /Estates to /Customers
             message = 'แก้ไขข้อมูลเรียบร้อยแล้ว'
             console.log('response', response.data)
@@ -137,5 +136,6 @@ const submitData = async () => {
         messageDOM.className = 'message danger'
     }
 }
+
 
 

@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors())
 
-const port = 8000;
+const port = 7000;
 
 let conn = null;
 
@@ -38,9 +38,6 @@ const validateData = (estateData) => {
   if (!estateData.type_estate) {
       errors.push('กรุณาเลือกประเภทของอสังหาริมทรัพย์')
   }
-  /*if (!estateData.interests) {
-      errors.push('กรุณาเลือกสิ่งที่สนใจ')
-  }*/
   if (!estateData.description_estate) {
       errors.push('กรุณากรอกคำอธิบายเพิ่มเติมเกี่ยวกับอสังหาริมทรัพย์')
   }

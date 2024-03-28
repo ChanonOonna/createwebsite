@@ -9,7 +9,7 @@ status
 message
 */
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'http://localhost:7000';
 
 let mode = 'CREATE' //default mode
 let selectedId =''
@@ -138,7 +138,7 @@ const submitData = async () => {
         if(mode == 'CREATE'){
             const response = await axios.post(`${BASE_URL}/Estates`,EstateData)
             console.log('response',response.data)
-        } else {//http://localhost:8000/users/17
+        } else {//http://localhost:7000/users/17
             const response = await axios.put(`${BASE_URL}/Estates/${selectedId}`, EstateData)
             message = 'แก้ไขข้อมูลเรียบร้อยแล้ว'
             console.log('response', response.data)

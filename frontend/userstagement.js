@@ -1,6 +1,6 @@
 //แสดง ข้อมูลอสังหา .js
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'http://localhost:7000';
 window.onload = async () => {
   await loadData();
 }
@@ -14,7 +14,7 @@ const loadData = async () => {
    console.log(response.data);
    //2. นำข้อมูล user ที่โหลดมาใส่เข้าไปใน html
    const usersDOM = document.getElementById('user');
-   //http://localhost:8000/users/1
+   //http://localhost:7000/users/1
 
    
    let htmlData ='<div>'
@@ -33,7 +33,7 @@ const loadData = async () => {
        deleteDOMs[i].addEventListener('click', async (event)=>{
           //ดึง id ของ user ที่ต้องการลบ
           const id = event.target.dataset.id;
-          try {//http://localhost:8000/users/1
+          try {//http://localhost:7000/users/1
             await axios.delete(`${BASE_URL}/Estates/${id}`);
             loadData() ///recursive function = เราเรียก function ซ้ำ
           }catch(error){

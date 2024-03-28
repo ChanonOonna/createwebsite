@@ -1,5 +1,5 @@
 //แสดงข้อมูลลูกค้า.js
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'http://localhost:7000';
 window.onload = async () => {
   await loadData();
 }
@@ -9,20 +9,20 @@ const loadData = async () => {
     
     
       //1. load user ทั้งหมดออกมาจาก API
-      const responseuser = await axios.get(`${BASE_URL}/Customers`);
-      console.log(responseuser.data);
+      const response = await axios.get(`${BASE_URL}/Customers`);
+      console.log(response.data);
    //2. นำข้อมูล user ที่โหลดมาใส่เข้าไปใน html
     const usersDOM = document.getElementById('user');
-   //http://localhost:8000/users/1
+   //http://localhost:7000/users/1
 
-   
+
    let htmlData ='<div>'
-    for(let i = 0; i < responseuser.data.length; i++){
-        let datacustomers = responseuser.data[i];
+    for(let i = 0; i < response.data.length; i++){
+        let data = response.data[i];
         htmlData += `<div>
-        ${datacustomers.id} ${datacustomers.firstname_customer} ${datacustomers.lastname_customer}
-        <a href='usercustomer.html'.html?id=${datacustomers.id}'><button class="edit">Edit</button></a> 
-        <button class ='delete' data-id='${datacustomers.id}'>Delete</button>
+        ${data.id} ${data.firstname_customer} ${data.lastname_customer}
+        <a href='infocustomer.html?id=${data.id}'><button class="edit">Edit</button></a> 
+        <button class ='delete' data-id='${data.id}'>Delete</button>
         </div>`;
     }
    htmlData += '</div>';
@@ -32,7 +32,7 @@ const loadData = async () => {
        deleteDOMs[i].addEventListener('click', async (event)=>{
           //ดึง id ของ user ที่ต้องการลบ
           const id = event.target.dataset.id;
-          try {//http://localhost:8000/users/1
+          try {//http://localhost:7000/users/1
             await axios.delete(`${BASE_URL}/Customers/${id}`);
             loadData() ///recursive function = เราเรียก function ซ้ำ
           }catch(error){
