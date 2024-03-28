@@ -33,7 +33,7 @@ const validateData = (estateData) => {
   }
 
   if (!estateData.size_estate) {
-      errors.push('กรุณากรอกขนาดพื้นที่้')
+      errors.push('กรุณากรอกขนาดพื้นที่')
   }
   if (!estateData.type_estate) {
       errors.push('กรุณาเลือกประเภทของอสังหาริมทรัพย์')
@@ -44,9 +44,16 @@ const validateData = (estateData) => {
   if (!estateData.description_estate) {
       errors.push('กรุณากรอกคำอธิบายเพิ่มเติมเกี่ยวกับอสังหาริมทรัพย์')
   }
-  if(!estateData.status_estate) {
-    errors.push('กรุณาเลือกสถานะของอสังหาริมทรัพย์')
+  if (!estateData.status_estate) {
+      errors.push('กรุณาเลือกสถานะของอสังหาริมทรัพย์')
   }
+  if (!estateData.maintenance_report) {
+      errors.push('กรุณากรอกการบำรุงอสังหาริมทรัพย์')
+  }
+  if (!estateData.maintenance_expense) {
+      errors.push('กรุณากรอกค่าใช้จ่ายประจำเดือน')
+  }
+      
   return errors
 }
 // path = GET /users สำหรับ get users ทั้งหมดที่บันทึกเข้าไปออกมา

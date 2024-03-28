@@ -50,20 +50,7 @@
       <div class="header-form-size">ขนาดของอสังหาริมทรัพย์ (ตรม.)</div>
       <input class="form" name="size_estate" type="number" min="0" max="100"> 
     </div>
-    <!--
-    <div class="form-input">
-      เพศ
-      <div>
-        <input name="interest" type="checkbox" value="หนังสือ"> หนังสือ
-      </div>
-      <div>
-        <input name="interest" type="checkbox" value="วิดีโอเกม"> วิดีโอเกม
-      </div>
-      <div>
-        <input name="interest" type="checkbox" value="การเมือง"> การเมือง
-      </div>
-    </div>
-    -->
+    
     <div class="form-input">
       ลายระเอียดของอสังหาริมทรัพย์
       <div>
@@ -79,6 +66,18 @@
         <option value="ถูกจองแล้ว">ถูกจองแล้ว</option>
       </select>
     </div>
+    <div class="form-input">
+      การบำรุงรักษาอสังหาริมทรัพย์
+      <div>
+        <textarea name="maintenance_report"></textarea>
+      </div>
+  </div>
+  <div class="form-input">
+      ค่าใช้จ่ายอสังหาริมทรัพย์ประจำเดือน
+      <div>
+        <input name="maintenance_expense" type="number" min="0" step="1">
+      </div>
+  </div>
 
     
     </div>

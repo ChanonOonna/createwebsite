@@ -32,13 +32,17 @@ window.onload = async () =>{
         let address_estateDOM = document.querySelector('input[name=address_estate]')
         let size_estateDOM = document.querySelector('input[name=size_estate]')
         let description_estateDOM = document.querySelector('textarea[name=description_estate]')
-        let status_estateDOM = document.querySelector('select[name=status_estate]') // Fixed incorrect name reference from 'status' to 'status_estate'
+        let status_estateDOM = document.querySelector('select[name=status_estate]')
+        let maintenance_reportDOM = document.querySelector('textarea[name=maintenance_report]')
+        let maintenance_expenseDOM = document.querySelector('input[name=maintenance_expense]')
         
         name_estateDOM.value = estates.name_Estate
         address_estateDOM.value = estates.address_Estate
-        size_estateDOM.value = estates.size_Estate.toString()
+        size_estateDOM.value = estates.size_Estate
         description_estateDOM.value = estates.description_Estate
         status_estateDOM.value = estates.status_estate
+        maintenance_reportDOM.value = estates.maintenance_report
+        maintenance_expenseDOM.value = estates.maintenance_expense
         
         let type_estateDOMs = document.querySelectorAll('input[name=type_estate]')
   
@@ -81,6 +85,12 @@ window.onload = async () =>{
     if (!estateData.status_estate) {
         errors.push('กรุณาเลือกสถานะของอสังหาริมทรัพย์')
     }
+    if (!estateData.maintenance_report) {
+        errors.push('กรุณากรอกการบำรุงรักษาอสังหาริมทรัพย์')
+    }
+    if (!estateData.maintenance_expense) {
+        errors.push('กรุณากรอกค่าใช้จ่ายอสังหาริมทรัพย์ประจำเดือน')
+    }
     
     return errors
   }
@@ -95,6 +105,8 @@ const submitData = async () => {
     //let interestDOMs = document.querySelectorAll('input[name=interests]:checked') || {}
     let description_estateDOM = document.querySelector('textarea[name=description_estate]')
     let status_estateDOM = document.querySelector('select[name=status_estate]')
+    let maintenance_reportDOM = document.querySelector('textarea[name=maintenance_report]')
+    let maintenance_expenseDOM = document.querySelector('input[name=maintenance_expense]')
     let messageDOM = document.getElementById('message')
 
     try {
@@ -105,7 +117,9 @@ const submitData = async () => {
           type_estate: type_estateDOM.value,
           size_estate: size_estateDOM.value,
           description_estate: description_estateDOM.value,
-          status_estate: status_estateDOM.value
+          status_estate: status_estateDOM.value,
+          maintenance_report: maintenance_reportDOM.value,
+          maintenance_expense: maintenance_expenseDOM.value
         }
         
         console.log('submit data', EstateData)
@@ -155,4 +169,3 @@ const submitData = async () => {
         messageDOM.className = 'message danger'
     }
 }
-
