@@ -59,7 +59,7 @@
     </div>
     <div class="flex form-input">
       <div class="header-form">สถานะของอสังหาริมทรัพย์</div>
-      <select name="status_estate">
+        <select name="status_estate">
         <option value="พร้อมใช้งาน">พร้อมใช้งาน</option>
         <option value="ไม่พร้อมใช้งาน">ไม่พร้อมใช้งาน</option>
         <option value="อยู่ระหว่างการซ่อมบำรุง">อยู่ระหว่างการซ่อมบำรุง</option>
@@ -71,23 +71,22 @@
       <div>
         <textarea name="maintenance_report"></textarea>
       </div>
-  </div>
+    </div>
   <div class="form-input">
       ค่าใช้จ่ายอสังหาริมทรัพย์ประจำเดือน
       <div>
         <input name="maintenance_expense" type="number" min="0" step="1">
       </div>
   </div>
-
     
-    </div>
-    <div id = "message" class ="message">
+    <div id="message" class="message">
       hi hi hi
     </div>
     <div class="center">
       <button onclick="submitData()" class="button">ส่งข้อมูล</button>
     </div>
   </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 <script src="datastagement.js"></script>
 </body>
