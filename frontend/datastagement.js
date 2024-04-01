@@ -125,12 +125,13 @@ const submitData = async () => {
         console.log('submit data', EstateData)
   
         const errors = validateData(EstateData)
-        
+       
         if (errors.length > 0) {
             // มี error เกิดขึ้น
             throw {
                 message: 'กรุณากรอกข้อมูลให้ครบถ้วน',
                 errors: errors
+
             }
         }
         let message = 'บันทึกข้อมูลเรียบร้อยเเล้ว'
